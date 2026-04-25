@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EcoFoote — Sustainability Behavior App — Venu Sri Sabbavarapu</title>
+<title>DC Public Library — Website Redesign — Venu Sri Sabbavarapu</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 
@@ -41,7 +41,7 @@ nav {
 }
 
 
-:root { --accent: #34D399; }
+:root { --accent: #60A5FA; }
 
 .case-hero { padding: 140px 48px 80px; max-width: 1000px; margin: 0 auto; }
 .case-tag {
@@ -120,23 +120,23 @@ nav {
 </nav>
 
 <div class="case-hero">
-  <div class="case-tag">Case Study 03 · EcoFoote</div>
-  <h1>EcoFoote<br><span>Sustainability Behavior App</span></h1>
-  <p class="subtitle">Designed an MVP to help users measure, reduce, and be rewarded for sustainable behavior — backed by generative research across 177 survey respondents.</p>
+  <div class="case-tag">Case Study 02 · DC Public Library</div>
+  <h1>DC Public Library<br><span>Website Redesign</span></h1>
+  <p class="subtitle">Re-architected a 12-year-old library website around two unmet user needs — unified search across catalog and site content, and a frictionless path to getting a library card online.</p>
   <div class="meta-row">
     <div class="meta-item">
       <label>Company</label>
-      <span>EcoFoote</span>
+      <span>DC Public Library</span>
     </div>
   
     <div class="meta-item">
       <label>Role</label>
-      <span>UX Designer</span>
+      <span>Lead UX Designer</span>
     </div>
   
     <div class="meta-item">
       <label>Domain</label>
-      <span>Climate Technology</span>
+      <span>Civic Technology</span>
     </div>
   
     <div class="meta-item">
@@ -146,66 +146,53 @@ nav {
   
     <div class="meta-item">
       <label>Team</label>
-      <span>1 PM · 6 UX · 3 Developers</span>
+      <span>2 UX · 2 Research · 3 Dev · DB Admin · 2 Librarians</span>
     </div>
   </div>
 </div>
 
 <div class="case-body">
+  <a class="live-link" href="https://catalog.dclibrary.org/search?query=" target="_blank">↗ Catalog Search</a><a class="live-link" href="https://www.dclibrary.org/get-a-card" target="_blank">↗ Get a Library Card</a>
   
-  
-  <div class="prose"><h2>The Challenge</h2>
-<p>EcoFoote connects people with sustainable businesses through a web application that takes users on a journey of measuring, reducing their carbon footprint, and rewarding sustainable behavior.</p>
-<p>Building an MVP to attract investors and business partners were the main goals. But before jumping to solutions, we needed to understand users deeply.</p>
+  <div class="prose"><h2>The Problem</h2>
+<p>DC Library&#39;s website had not been substantively redesigned in over a decade. A revamp was underway in 2020 — but it wasn&#39;t being built around what users actually needed. Quantitative data pointed clearly to two unresolved user pain points:</p>
+<ol>
+<li>Finding relevant information on the website</li>
+<li>Getting a library card online</li>
+</ol>
+<p>The revamp prioritized neither.</p>
 <blockquote>
-<p>&quot;Sustainable behavior is an option — a choice that people have to make every day.&quot; — Key research insight</p>
+<p>&quot;Customers type in a keyword and expect information from either the website or catalog to show in results. People expect our website search to behave like Google.&quot; — Customer-facing library staff</p>
 </blockquote>
-<h2>Research</h2>
-<h3>Card Sorting — Finding Real Themes</h3>
-<p>Used card sorting to deduce broad themes from existing survey responses before designing anything:</p>
+<h2>Research Methods</h2>
 <ul>
-<li>Diet, Education &amp; Awareness, Rewards</li>
-<li>Transportation, Plastic Usage, Activism</li>
-<li>Measuring Impact, Behavior Change</li>
+<li><strong>Stakeholder Mapping</strong> — Mapped internal and external stakeholders to surface competing priorities</li>
+<li><strong>Quantitative Analytics (VOP)</strong> — Analyzed Voice of the Patron survey data alongside site analytics</li>
+<li><strong>User Interviews</strong> — Qualitative interviews with patrons and staff</li>
+<li><strong>Card Sorting</strong> — Validated IA assumptions with real users</li>
 </ul>
-<h3>Survey Data — 177 Respondents</h3>
-<table>
-<thead>
-<tr>
-<th>Finding</th>
-<th>Data</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Wanted to reduce plastic in their lives</td>
-<td>70%+</td>
-</tr>
-<tr>
-<td>Found it inconvenient to recycle</td>
-<td>35%</td>
-</tr>
-</tbody></table>
-<h3>User Interviews — Three Behavioral Groups</h3>
-<p><strong>Group 1</strong> — Often engage in sustainable behavior. Motivated, need reinforcement.</p>
-<p><strong>Group 2</strong> — Engage sometimes. Need lower-friction entry points and visible impact.</p>
-<p><strong>Group 3</strong> — Rarely engage. Need education, awareness, and accessible first actions.</p>
-<blockquote>
-<p>&quot;I am trying to be intentional about the way I interact with the environment.&quot; — Tamra, Eco-Lodge Founder</p>
-<p>&quot;I know there is information on labels on how to recycle but I don&#39;t want to spend the time reading them.&quot; — Yboa, Business Analyst</p>
-</blockquote>
+<h2>Root Cause Analysis</h2>
+<p><strong>Insight 1 — Catalog Redirect Disorientation</strong>
+Users searching site content were silently redirected to a 3rd-party catalog — a jarring context switch most users didn&#39;t recognize or recover from.</p>
+<p><strong>Insight 2 — Fragmented Search Systems</strong>
+Catalog search and website search were completely separate. Users had to know which system to use.</p>
+<p><strong>Insight 3 — Content Inconsistency at Scale</strong>
+150 editors publishing weekly created quality variance that buried relevant results.</p>
 <h2>Design Strategy</h2>
-<h3>1 — Rewarding Sustainable Behavior</h3>
-<p>Users upload receipts, pictures, or documents related to sustainable actions to earn points — redeemable for gift cards, online shopping, or premium memberships.</p>
-<h3>2 — Activism as an Accessible Option</h3>
-<p>Users browse sustainability articles and choose to take action relevant to what they read — earning rewards for their activism.</p>
-<h3>3 — Measuring Impact to Drive Behavior</h3>
-<p>A carbon footprint calculator converts user actions into a score — giving users a concrete sense of how much impact their behavioral changes create.</p>
-<h3>4 — Business Directory Integration</h3>
-<p>Connects users with sustainable local businesses — enabling points to be earned through shopping choices as well as behavioral actions.</p>
+<p>The core decision: a single unified search interface presenting catalog items, events, and site content together in an &quot;All Results&quot; view — with tabbed filters to narrow results without understanding back-end system boundaries.</p>
+<h3>Get a Card Redesign</h3>
+<p>Streamlined personal details form with a contextual FAQ accordion directly below — answering the exact questions that caused users to abandon mid-form:</p>
+<ul>
+<li>Who can apply</li>
+<li>After you complete the form</li>
+<li>Validating your account &amp; transitioning to permanent card</li>
+<li>Renewing your card</li>
+<li>If you do not have a permanent address</li>
+</ul>
 <h2>Outcome</h2>
-<p>One complete concept was presented to the EcoFoote founders — demonstrating the full user journey from onboarding through action, reward, and impact measurement. The most valuable lesson: sustainability is a genuinely complex, misinformation-laden topic that required constant stakeholder communication to navigate.</p>
+<p>Both deliverables shipped and remain live on dclibrary.org. Phase 2 scoped to include FRBR-based record grouping, event registration from within search, and expanded sign-in context.</p>
 </div>
-  <div class="next-prev"><a class="nav-proj" href="dc-library.html"><span class="dir">← Previous</span><h4>DC Public Library — Website Redesign</h4></a></div>
+  <div class="next-prev"><a class="nav-proj" href="caterpillar-hmi.html"><span class="dir">← Previous</span><h4>Caterpillar — Industrial HMI Design System</h4></a><a class="nav-proj right" href="ecofoote.html"><span class="dir">Next →</span><h4>EcoFoote — Sustainability Behavior App</h4></a></div>
 </div>
 
 </body>
