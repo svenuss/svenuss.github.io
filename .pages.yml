@@ -1,0 +1,48 @@
+content:
+  - name: projects
+    label: Case Studies
+    path: _projects
+    filename: "{fields.slug}.md"
+    fields:
+      - name: title
+        label: Project Title
+        type: string
+      - name: slug
+        label: URL Slug
+        type: string
+      - name: order
+        label: Display Order
+        type: number
+      - name: featured
+        label: Show on homepage?
+        type: boolean
+        default: true
+      - name: company
+        label: Company / Client
+        type: string
+      - name: role
+        label: Your Role
+        type: string
+      - name: domain
+        label: Domain / Industry
+        type: string
+      - name: year
+        label: Year
+        type: string
+      - name: accent
+        label: Accent Color (hex)
+        type: string
+        default: "#F5C518"
+      - name: tags
+        label: Tags
+        type: string[]
+      - name: summary
+        label: One-line Summary
+        type: text
+      - name: body
+        label: Case Study Content
+        type: rich-text
+
+media:
+  input: assets/images
+  output: /assets/images
