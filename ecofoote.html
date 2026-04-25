@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Caterpillar — Industrial HMI Design System — Venu Sri Sabbavarapu</title>
+<title>EcoFoote — Sustainability Behavior App — Venu Sri Sabbavarapu</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 
@@ -41,7 +41,7 @@ nav {
 }
 
 
-:root { --accent: #F5C518; }
+:root { --accent: #34D399; }
 
 .case-hero { padding: 140px 48px 80px; max-width: 1000px; margin: 0 auto; }
 .case-tag {
@@ -120,33 +120,33 @@ nav {
 </nav>
 
 <div class="case-hero">
-  <div class="case-tag">Case Study 01 · Caterpillar Inc.</div>
-  <h1>Caterpillar<br><span>Industrial HMI Design System</span></h1>
-  <p class="subtitle">Designed the intelligence layer for Caterpillar's power generation control hardware — end-to-end UX lead and PM, resulting in a granted U.S. design patent.</p>
+  <div class="case-tag">Case Study 02 · EcoFoote</div>
+  <h1>EcoFoote<br><span>Sustainability Behavior App</span></h1>
+  <p class="subtitle">Designed an MVP to help users measure, reduce, and be rewarded for sustainable behavior — backed by generative research across 177 survey respondents.</p>
   <div class="meta-row">
     <div class="meta-item">
       <label>Company</label>
-      <span>Caterpillar Inc.</span>
+      <span>EcoFoote</span>
     </div>
   
     <div class="meta-item">
       <label>Role</label>
-      <span>UX Lead + PM</span>
+      <span>UX Designer</span>
     </div>
   
     <div class="meta-item">
       <label>Domain</label>
-      <span>Industrial HMI · Embedded</span>
+      <span>Climate Technology</span>
     </div>
   
     <div class="meta-item">
-      <label>Patent</label>
-      <span>US D1,045,913 S</span>
+      <label>Year</label>
+      <span>2020</span>
     </div>
   
     <div class="meta-item">
-      <label>Filed</label>
-      <span>March 31, 2023</span>
+      <label>Team</label>
+      <span>1 PM · 6 UX · 3 Developers</span>
     </div>
   </div>
 </div>
@@ -154,61 +154,58 @@ nav {
 <div class="case-body">
   
   
-  <div class="prose"><h2>The Problem</h2>
-<p>Caterpillar&#39;s power generation systems — generator sets and LSLD (Load Shed / Load Demand) controllers — operate in environments where a misread value or delayed response can cause equipment failure or safety incidents. Operators navigated dense, inconsistent interfaces across hardware generations with no unified design system.</p>
-<p>I was brought on as UX Design Lead with PM responsibilities to create a cohesive HMI for a new class of Caterpillar generator control hardware — building both the visual design system and the product development process from scratch.</p>
+  <div class="prose"><h2>The Challenge</h2>
+<p>EcoFoote connects people with sustainable businesses through a web application that takes users on a journey of measuring, reducing their carbon footprint, and rewarding sustainable behavior.</p>
+<p>Building an MVP to attract investors and business partners were the main goals. But before jumping to solutions, we needed to understand users deeply.</p>
 <blockquote>
-<p>&quot;The challenge wasn&#39;t just visual — it was translating complex real-time system states (power load, frequency, sequencing logic) into an interface a field technician could trust under pressure.&quot;</p>
+<p>&quot;Sustainable behavior is an option — a choice that people have to make every day.&quot; — Key research insight</p>
 </blockquote>
-<h2>Impact</h2>
+<h2>Research</h2>
+<h3>Card Sorting — Finding Real Themes</h3>
+<p>Used card sorting to deduce broad themes from existing survey responses before designing anything:</p>
+<ul>
+<li>Diet, Education &amp; Awareness, Rewards</li>
+<li>Transportation, Plastic Usage, Activism</li>
+<li>Measuring Impact, Behavior Change</li>
+</ul>
+<h3>Survey Data — 177 Respondents</h3>
 <table>
 <thead>
 <tr>
-<th>Metric</th>
-<th>Result</th>
+<th>Finding</th>
+<th>Data</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>U.S. Design Patent granted</td>
-<td>1</td>
+<td>Wanted to reduce plastic in their lives</td>
+<td>70%+</td>
 </tr>
 <tr>
-<td>Cross-functional collaborators</td>
-<td>~8</td>
-</tr>
-<tr>
-<td>Core delivery artifacts</td>
-<td>4</td>
-</tr>
-<tr>
-<td>Estimated reduction in review cycles</td>
-<td>~30%</td>
+<td>Found it inconvenient to recycle</td>
+<td>35%</td>
 </tr>
 </tbody></table>
-<h2>Process</h2>
-<h3>01 — Operator Research &amp; Context Mapping</h3>
-<p>Studied generator operator workflows across single-gen and grid-parallel environments. Mapped mental models for diagnosing system state — load, frequency, voltage, LSLD sequencing — and identified where existing interfaces caused hesitation or errors.</p>
-<h3>02 — Navigation Architecture</h3>
-<p>Designed a hierarchical navigation tree covering the full screen taxonomy — Genset Overview, LSLD Control, Sync, DBA, and Load Share views — documented in Word for engineering readability.</p>
-<h3>03 — High-Fidelity Mockups (Adobe Xd)</h3>
-<p>Produced pixel-accurate, full-color mockups representing every screen state — active/idle modes, real-time data readouts, alert states, feedback sections — in a dark-themed visual system optimized for low-light industrial environments.</p>
-<h3>04 — Annotation Specs &amp; Modbus Mapping</h3>
-<p>Annotated every UI element&#39;s behavior, data binding, and state logic. Created a companion Modbus Table linking each display parameter to its register address — eliminating back-and-forth between design and firmware.</p>
-<h3>05 — Agile Sprint Execution</h3>
-<p>Ran sprint cycles with cross-functional reviews involving firmware engineers, product managers, and field operations.</p>
-<h3>06 — Patent Filing &amp; IP Contribution</h3>
-<p>GUI design filed as Appl. No. 29/888,489 on March 31, 2023, and subsequently granted as US D1,045,913 S.</p>
-<h2>Deliverables</h2>
-<ul>
-<li><strong>Navigation Tree</strong> — Full screen taxonomy in Word</li>
-<li><strong>Hi-Fi Mockups · Adobe Xd</strong> — Pixel-accurate dark-themed UI covering all screen states</li>
-<li><strong>Annotated Specs</strong> — Behavior documentation per UI element</li>
-<li><strong>Modbus Table</strong> — Parameter-to-register mapping bridging UX and firmware</li>
-</ul>
-<h2>Patent</h2>
-<p><strong>US D1,045,913 S</strong> — Display Screen or Portion Thereof with Graphical User Interface. Assigned to Caterpillar Inc., Peoria, IL. Filed March 31, 2023 (Appl. No. 29/888,489). Term: 15 Years.</p>
+<h3>User Interviews — Three Behavioral Groups</h3>
+<p><strong>Group 1</strong> — Often engage in sustainable behavior. Motivated, need reinforcement.</p>
+<p><strong>Group 2</strong> — Engage sometimes. Need lower-friction entry points and visible impact.</p>
+<p><strong>Group 3</strong> — Rarely engage. Need education, awareness, and accessible first actions.</p>
+<blockquote>
+<p>&quot;I am trying to be intentional about the way I interact with the environment.&quot; — Tamra, Eco-Lodge Founder</p>
+<p>&quot;I know there is information on labels on how to recycle but I don&#39;t want to spend the time reading them.&quot; — Yboa, Business Analyst</p>
+</blockquote>
+<h2>Design Strategy</h2>
+<h3>1 — Rewarding Sustainable Behavior</h3>
+<p>Users upload receipts, pictures, or documents related to sustainable actions to earn points — redeemable for gift cards, online shopping, or premium memberships.</p>
+<h3>2 — Activism as an Accessible Option</h3>
+<p>Users browse sustainability articles and choose to take action relevant to what they read — earning rewards for their activism.</p>
+<h3>3 — Measuring Impact to Drive Behavior</h3>
+<p>A carbon footprint calculator converts user actions into a score — giving users a concrete sense of how much impact their behavioral changes create.</p>
+<h3>4 — Business Directory Integration</h3>
+<p>Connects users with sustainable local businesses — enabling points to be earned through shopping choices as well as behavioral actions.</p>
+<h2>Outcome</h2>
+<p>One complete concept was presented to the EcoFoote founders — demonstrating the full user journey from onboarding through action, reward, and impact measurement. The most valuable lesson: sustainability is a genuinely complex, misinformation-laden topic that required constant stakeholder communication to navigate.</p>
 </div>
-  <div class="next-prev"><a class="nav-proj right" href="ecofoote.html"><span class="dir">Next →</span><h4>EcoFoote — Sustainability Behavior App</h4></a></div>
+  <div class="next-prev"><a class="nav-proj" href="caterpillar-hmi.html"><span class="dir">← Previous</span><h4>Caterpillar — Industrial HMI Design System</h4></a></div>
 </div>
 
 </body>
