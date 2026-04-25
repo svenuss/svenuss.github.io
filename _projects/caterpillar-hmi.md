@@ -25,7 +25,6 @@ I was brought on as UX Design Lead with PM responsibilities to create a cohesive
 
 | Metric | Result |
 | ------------------------------------ | ------ |
-| U.S. Design Patent granted | 1 |
 | Cross-functional collaborators | ~8 |
 | Core delivery artifacts | 4 |
 | Estimated reduction in review cycles | ~30% |
