@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caterpillar — Industrial HMI Design System — Venu Sri Sabbavarapu</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black: #080808; --dark: #111; --gray: #1A1A1A; --mid: #242424;
+  --border: #2C2C2C; --text: #E4E4E4; --muted: #777; --yellow: #F5C518;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--black); color: var(--text);
+  font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.75;
+  overflow-x: hidden; -webkit-font-smoothing: antialiased;
+}
+body::after {
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.4;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px 48px; display: flex; align-items: center; justify-content: space-between;
+  background: rgba(8,8,8,0.85); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; color: var(--text); text-decoration: none; }
+.nav-name span { color: var(--yellow); }
+.nav-back { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.nav-back:hover { color: var(--yellow); }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--yellow); }
+@media (max-width: 768px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+}
+
+
+:root { --accent: #F5C518; }
+
+.case-hero { padding: 140px 48px 80px; max-width: 1000px; margin: 0 auto; }
+.case-tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 28px;
+}
+.case-tag::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
+.case-hero h1 {
+  font-family: 'Space Grotesk', sans-serif; font-size: clamp(36px, 6vw, 72px);
+  font-weight: 700; letter-spacing: -0.03em; line-height: 1.0; margin-bottom: 28px;
+}
+.case-hero h1 span { color: var(--accent); }
+.case-hero .subtitle { font-size: 19px; font-weight: 300; color: #999; max-width: 620px; line-height: 1.6; margin-bottom: 56px; }
+.meta-row { display: flex; flex-wrap: wrap; border-top: 1px solid var(--border); border-left: 1px solid var(--border); }
+.meta-item { flex: 1; min-width: 140px; padding: 20px 24px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.meta-item label { display: block; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
+.meta-item span { font-size: 13px; color: var(--text); }
+
+.case-body { max-width: 1000px; margin: 0 auto; padding: 0 48px 120px; }
+
+/* Markdown content styles */
+.prose { max-width: 720px; }
+.prose h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(22px, 3vw, 36px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin: 64px 0 20px; padding-top: 64px; border-top: 1px solid var(--border); color: var(--text); }
+.prose h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+.prose h3 { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; margin: 32px 0 12px; color: var(--text); }
+.prose h4 { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; margin: 24px 0 8px; color: var(--text); }
+.prose p { font-size: 16px; color: #9A9A9A; margin-bottom: 18px; line-height: 1.75; }
+.prose strong { color: var(--text); font-weight: 600; }
+.prose em { font-style: italic; }
+.prose ul, .prose ol { margin: 16px 0 20px 0; padding-left: 0; list-style: none; }
+.prose li { font-size: 15px; color: #9A9A9A; padding: 6px 0 6px 20px; border-bottom: 1px solid var(--border); position: relative; }
+.prose li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 12px; top: 8px; }
+.prose li:last-child { border-bottom: none; }
+.prose blockquote { background: var(--gray); border-left: 3px solid var(--accent); padding: 24px 28px; margin: 32px 0; font-size: 18px; font-weight: 300; font-style: italic; color: var(--text); line-height: 1.6; }
+.prose blockquote p { color: var(--text); margin-bottom: 0; font-size: 18px; }
+.prose table { width: 100%; border-collapse: collapse; margin: 32px 0; }
+.prose th { font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); background: var(--gray); padding: 12px 16px; text-align: left; border: 1px solid var(--border); }
+.prose td { font-size: 14px; color: #9A9A9A; padding: 12px 16px; border: 1px solid var(--border); background: var(--dark); }
+.prose tr:hover td { background: var(--gray); }
+.prose hr { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+.prose a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.prose a:hover { border-bottom-color: var(--accent); }
+.prose code { font-family: 'Space Mono', monospace; font-size: 12px; background: var(--gray); padding: 2px 6px; color: var(--accent); }
+
+.live-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent);
+  text-decoration: none; border: 1px solid rgba(255,255,255,0.1);
+  padding: 10px 18px; transition: all 0.2s; margin: 8px 8px 32px 0; width: fit-content;
+}
+.live-link:hover { background: rgba(255,255,255,0.05); border-color: var(--accent); }
+
+.cover-img { width: 100%; display: block; margin: 40px 0; border: 1px solid var(--border); }
+
+.next-prev { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 80px; }
+.nav-proj { background: var(--gray); padding: 32px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px; transition: background 0.2s; border-left: 3px solid transparent; }
+.nav-proj:hover { background: var(--mid); border-left-color: var(--yellow); }
+.nav-proj .dir { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.nav-proj h4 { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: var(--text); }
+.nav-proj.right { text-align: right; border-left: none; border-right: 3px solid transparent; }
+.nav-proj.right:hover { border-left: none; border-right-color: var(--yellow); }
+
+@media (max-width: 768px) {
+  .case-hero, .case-body { padding-left: 24px; padding-right: 24px; }
+  .next-prev { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-name" href="index.html">Venu<span>.</span></a>
+  <a class="nav-back" href="index.html">← All Work</a>
+</nav>
+
+<div class="case-hero">
+  <div class="case-tag">Case Study 01 · Caterpillar Inc.</div>
+  <h1>Caterpillar<br><span>Industrial HMI Design System</span></h1>
+  <p class="subtitle">Designed the intelligence layer for Caterpillar's power generation control hardware — end-to-end UX lead and PM, resulting in a granted U.S. design patent.</p>
+  <div class="meta-row">
+    <div class="meta-item">
+      <label>Company</label>
+      <span>Caterpillar Inc.</span>
+    </div>
+  
+    <div class="meta-item">
+      <label>Role</label>
+      <span>UX Lead + PM</span>
+    </div>
+  
+    <div class="meta-item">
+      <label>Domain</label>
+      <span>Industrial HMI · Embedded</span>
+    </div>
+  
+    <div class="meta-item">
+      <label>Patent</label>
+      <span>US D1,045,913 S</span>
+    </div>
+  
+    <div class="meta-item">
+      <label>Filed</label>
+      <span>March 31, 2023</span>
+    </div>
+  </div>
+</div>
+
+<div class="case-body">
+  
+  
+  <div class="prose"><h2>The Problem</h2>
+<p>Caterpillar&#39;s power generation systems — generator sets and LSLD (Load Shed / Load Demand) controllers — operate in environments where a misread value or delayed response can cause equipment failure or safety incidents. Operators navigated dense, inconsistent interfaces across hardware generations with no unified design system.</p>
+<p>I was brought on as UX Design Lead with PM responsibilities to create a cohesive HMI for a new class of Caterpillar generator control hardware — building both the visual design system and the product development process from scratch.</p>
+<blockquote>
+<p>&quot;The challenge wasn&#39;t just visual — it was translating complex real-time system states (power load, frequency, sequencing logic) into an interface a field technician could trust under pressure.&quot;</p>
+</blockquote>
+<h2>Impact</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>U.S. Design Patent granted</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Cross-functional collaborators</td>
+<td>~8</td>
+</tr>
+<tr>
+<td>Core delivery artifacts</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Estimated reduction in review cycles</td>
+<td>~30%</td>
+</tr>
+</tbody></table>
+<h2>Process</h2>
+<h3>01 — Operator Research &amp; Context Mapping</h3>
+<p>Studied generator operator workflows across single-gen and grid-parallel environments. Mapped mental models for diagnosing system state — load, frequency, voltage, LSLD sequencing — and identified where existing interfaces caused hesitation or errors.</p>
+<h3>02 — Navigation Architecture</h3>
+<p>Designed a hierarchical navigation tree covering the full screen taxonomy — Genset Overview, LSLD Control, Sync, DBA, and Load Share views — documented in Word for engineering readability.</p>
+<h3>03 — High-Fidelity Mockups (Adobe Xd)</h3>
+<p>Produced pixel-accurate, full-color mockups representing every screen state — active/idle modes, real-time data readouts, alert states, feedback sections — in a dark-themed visual system optimized for low-light industrial environments.</p>
+<h3>04 — Annotation Specs &amp; Modbus Mapping</h3>
+<p>Annotated every UI element&#39;s behavior, data binding, and state logic. Created a companion Modbus Table linking each display parameter to its register address — eliminating back-and-forth between design and firmware.</p>
+<h3>05 — Agile Sprint Execution</h3>
+<p>Ran sprint cycles with cross-functional reviews involving firmware engineers, product managers, and field operations.</p>
+<h3>06 — Patent Filing &amp; IP Contribution</h3>
+<p>GUI design filed as Appl. No. 29/888,489 on March 31, 2023, and subsequently granted as US D1,045,913 S.</p>
+<h2>Deliverables</h2>
+<ul>
+<li><strong>Navigation Tree</strong> — Full screen taxonomy in Word</li>
+<li><strong>Hi-Fi Mockups · Adobe Xd</strong> — Pixel-accurate dark-themed UI covering all screen states</li>
+<li><strong>Annotated Specs</strong> — Behavior documentation per UI element</li>
+<li><strong>Modbus Table</strong> — Parameter-to-register mapping bridging UX and firmware</li>
+</ul>
+<h2>Patent</h2>
+<p><strong>US D1,045,913 S</strong> — Display Screen or Portion Thereof with Graphical User Interface. Assigned to Caterpillar Inc., Peoria, IL. Filed March 31, 2023 (Appl. No. 29/888,489). Term: 15 Years.</p>
+</div>
+  <div class="next-prev"></div>
+</div>
+
+</body>
+</html>
