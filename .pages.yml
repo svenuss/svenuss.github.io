@@ -1,15 +1,18 @@
 content:
   - name: projects
     label: Case Studies
+    type: collection
     path: _projects
     filename: "{fields.slug}.md"
     fields:
       - name: title
         label: Project Title
         type: string
+        required: true
       - name: slug
         label: URL Slug
         type: string
+        required: true
       - name: order
         label: Display Order
         type: number
@@ -34,8 +37,8 @@ content:
         type: string
         default: "#F5C518"
       - name: tags
-        label: Tags
-        type: string[]
+        label: Tags (comma separated)
+        type: string
       - name: summary
         label: One-line Summary
         type: text
