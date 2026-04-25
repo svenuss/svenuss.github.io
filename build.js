@@ -75,7 +75,7 @@ function buildIndex(projects) {
       <div class="project-num">0${i + 1}</div>
       <div class="project-body">
         <div class="project-tags">
-          ${(p.tags || []).map((t, ti) => `<span class="tag${ti === 0 ? ' highlight' : ''}" style="${ti === 0 ? `--accent:${p.accent || '#F5C518'}` : ''}">${t}</span>`).join('')}
+          ${(typeof p.tags === 'string' ? p.tags.split(',').map(t => t.trim()) : p.tags || []).map((t, ti) => `<span class="tag${ti === 0 ? ' highlight' : ''}" style="${ti === 0 ? `--accent:${p.accent || '#F5C518'}` : ''}">${t}</span>`).join('')}
         </div>
         <h2>${p.title}</h2>
         <p>${p.summary || ''}</p>
