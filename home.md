@@ -1,5 +1,5 @@
 ---
-name: Venu Sri Sabbavarapu
+name: Venu Sabbavarapu
 title: Product & UX Lead
 tagline: I build products at the intersection of hardware, software, and human
   behavior, from industrial HMI systems to consumer-facing web experiences.
