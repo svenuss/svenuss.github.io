@@ -1,0 +1,17 @@
+---
+name: "Venu Sri Sabbavarapu"
+title: "Product Manager & UX Lead"
+tagline: "I build products at the intersection of hardware, software, and human behavior — from patented industrial HMI systems to consumer-facing web experiences."
+email: "venu@example.com"
+location: "United States"
+patent: "US D1,045,913 S"
+industries: "Industrial · Civic · Climate"
+contact_headline: "Let's build something worth patenting."
+about_headline: "Design thinking meets product delivery"
+about_body: "I'm a Product Manager and UX Design Lead who operates across the full product lifecycle — from generative user research and interaction design through to engineering handoff, Agile delivery, and IP creation.\n\nMy background spans industrial hardware (Caterpillar), civic technology (DC Public Library), and climate tech (EcoFoote) — giving me range across complex user contexts and technical constraints.\n\nFor hardware and robotics companies: I understand embedded system constraints, firmware coordination, and what it takes to design interfaces that work on real physical hardware."
+skills_product: "Roadmapping, Agile / Sprints, Requirements (SRS), Stakeholder Mgmt, IP / Patent Filing"
+skills_design: "Adobe Xd, Hi-Fi Prototyping, Information Architecture, Annotation Specs, Design Systems"
+skills_research: "User Interviews, Card Sorting, Survey Design, Analytics, Stakeholder Mapping"
+skills_domain: "Industrial / HMI, Embedded Systems, Civic Tech, Climate / Sustainability, Consumer Apps"
+footer_note: "Product Manager · UX Lead · US D1,045,913 S"
+---
