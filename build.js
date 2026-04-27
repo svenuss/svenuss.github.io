@@ -52,18 +52,11 @@ nav {
 .nav-name:hover { opacity: 0.7; }
 .nav-name:active { opacity: 0.5; }
 .nav-name span { color: var(--yellow); }
-.nav-back {
-  font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase;
-  letter-spacing: 0.06em; color: var(--muted); text-decoration: none; transition: color 0.2s;
-}
+.nav-back { font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.02em; text-transform: none; color: var(--muted); text-decoration: none; transition: color 0.2s; }
 .nav-back:hover { color: var(--yellow); }
 .nav-back:active { color: var(--text); }
 .nav-links { display: flex; gap: 36px; list-style: none; }
-.nav-links a {
-  font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase;
-  letter-spacing: 0.06em; color: var(--muted); text-decoration: none;
-  transition: color 0.2s; padding-bottom: 2px; border-bottom: 1px solid transparent;
-}
+.nav-links a { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.01em; text-transform: none; color: var(--muted); text-decoration: none; transition: color 0.2s; padding-bottom: 2px; border-bottom: 1px solid transparent; }
 .nav-links a:hover { color: var(--yellow); border-bottom-color: rgba(245,197,24,0.4); }
 .nav-links a:active { color: var(--text); }
 
