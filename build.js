@@ -51,15 +51,6 @@ function ensureDir(dir) {
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 }
 
-// ── Load home page content ────────────────────────────────
-function loadHome() {
-  const homePath = './home.md';
-  if (!fs.existsSync(homePath)) return {};
-  const raw = fs.readFileSync(homePath, 'utf8');
-  const { data } = matter(raw);
-  return data;
-}
-
 // ── Load and sort projects ────────────────────────────────
 function loadProjects() {
   const files = fs.readdirSync(PROJECTS_DIR).filter(f => f.endsWith('.md'));
@@ -78,31 +69,13 @@ function renderContent(md) {
 }
 
 // ── Build homepage ────────────────────────────────────────
-function buildIndex(projects, home) {
-  const name = home.name || 'Venu Sri Sabbavarapu';
-  const firstName = name.split(' ')[0];
-  const lastName = name.split(' ').slice(1).join(' ');
-  const jobTitle = home.title || 'Product Manager & UX Lead';
-  const tagline = home.tagline || '';
-  const email = home.email || 'hello@example.com';
-  const location = home.location || 'United States';
-  const patent = home.patent || '';
-  const industries = home.industries || '';
-  const contactHeadline = home.contact_headline || "Let's work together.";
-  const aboutHeadline = home.about_headline || 'About';
-  const aboutBody = (home.about_body || '').split('\\n\\n').map(p => `<p>${p}</p>`).join('');
-  const skillsProduct = (home.skills_product || '').split(',').map(s => `<li>${s.trim()}</li>`).join('');
-  const skillsDesign = (home.skills_design || '').split(',').map(s => `<li>${s.trim()}</li>`).join('');
-  const skillsResearch = (home.skills_research || '').split(',').map(s => `<li>${s.trim()}</li>`).join('');
-  const skillsDomain = (home.skills_domain || '').split(',').map(s => `<li>${s.trim()}</li>`).join('');
-  const footerNote = home.footer_note || '';
-
+function buildIndex(projects) {
   const cards = projects.filter(p => p.featured !== false).map((p, i) => `
     <a class="project-card" href="${p.slug}.html">
       <div class="project-num">0${i + 1}</div>
       <div class="project-body">
         <div class="project-tags">
-          ${(typeof p.tags === 'string' ? p.tags.split(',').map(t => t.trim()) : p.tags || []).map((t, ti) => `<span class="tag${ti === 0 ? ' highlight' : ''}" style="${ti === 0 ? `--accent:${p.accent || '#F5C518'}` : ''}">${t}</span>`).join('')}
+          ${(p.tags || []).map((t, ti) => `<span class="tag${ti === 0 ? ' highlight' : ''}" style="${ti === 0 ? `--accent:${p.accent || '#F5C518'}` : ''}">${t}</span>`).join('')}
         </div>
         <h2>${p.title}</h2>
         <p>${p.summary || ''}</p>
@@ -116,7 +89,7 @@ function buildIndex(projects, home) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${name} — ${jobTitle}</title>
+<title>Venu Sri Sabbavarapu — Product Manager</title>
 <link href="${FONTS}" rel="stylesheet">
 <style>
 ${BASE_CSS}
@@ -252,7 +225,8 @@ footer p { font-size: 12px; color: var(--muted); margin-bottom: 0; }
 <body>
 
 <nav>
-  <a class="nav-name" href="index.html">${firstName}<span>.</span></a>
+  <a class="nav-name" href="index.html">Venu<span>.</span></a>
+  <ul class="nav-links">
     <li><a href="#work">Work</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -262,14 +236,14 @@ footer p { font-size: 12px; color: var(--muted); margin-bottom: 0; }
 <section class="hero">
   <div class="hero-bg">PM</div>
   <div class="hero-inner">
-    <div class="hero-tag">${jobTitle}</div>
-    <h1>${firstName}<span class="accent">${lastName}</span></h1>
-    <p class="hero-desc">${tagline}</p>
+    <div class="hero-tag">Product Manager &amp; UX Lead</div>
+    <h1>Venu Sri<span class="accent">Sabbavarapu</span></h1>
+    <p class="hero-desc">I build products at the intersection of hardware, software, and human behavior — from patented industrial HMI systems to consumer-facing web experiences.</p>
     <div class="hero-stats">
       <div class="hero-stat"><label>Experience</label><span>UX Design + PM</span></div>
-      ${patent ? `<div class="hero-stat"><label>Patent</label><span>${patent}</span></div>` : ''}
-      ${industries ? `<div class="hero-stat"><label>Industries</label><span>${industries}</span></div>` : ''}
-      ${location ? `<div class="hero-stat"><label>Based</label><span>${location}</span></div>` : ''}
+      <div class="hero-stat"><label>Patent</label><span>US D1,045,913 S</span></div>
+      <div class="hero-stat"><label>Industries</label><span>Industrial · Civic · Climate</span></div>
+      <div class="hero-stat"><label>Based</label><span>United States</span></div>
     </div>
   </div>
 </section>
@@ -286,14 +260,16 @@ footer p { font-size: 12px; color: var(--muted); margin-bottom: 0; }
   <div class="about-inner">
     <div>
       <div class="section-label" style="margin-bottom:20px;">About</div>
-      <h2>${aboutHeadline}</h2>
-      ${aboutBody}
+      <h2>Design thinking meets <span>product delivery</span></h2>
+      <p>I'm a Product Manager and UX Design Lead who operates across the full product lifecycle — from generative user research and interaction design through to engineering handoff, Agile delivery, and IP creation.</p>
+      <p>My background spans industrial hardware (Caterpillar), civic technology (DC Public Library), and climate tech (EcoFoote) — giving me range across complex user contexts and technical constraints.</p>
+      <p>For hardware and robotics companies: I understand embedded system constraints, firmware coordination, and what it takes to design interfaces that work on real physical hardware.</p>
     </div>
     <div class="skills-grid">
-      <div class="skill-block"><label>Product</label><ul>${skillsProduct}</ul></div>
-      <div class="skill-block"><label>Design</label><ul>${skillsDesign}</ul></div>
-      <div class="skill-block"><label>Research</label><ul>${skillsResearch}</ul></div>
-      <div class="skill-block"><label>Domain</label><ul>${skillsDomain}</ul></div>
+      <div class="skill-block"><label>Product</label><ul><li>Roadmapping</li><li>Agile / Sprints</li><li>Requirements (SRS)</li><li>Stakeholder Mgmt</li><li>IP / Patent Filing</li></ul></div>
+      <div class="skill-block"><label>Design</label><ul><li>Adobe Xd</li><li>Hi-Fi Prototyping</li><li>Information Architecture</li><li>Annotation Specs</li><li>Design Systems</li></ul></div>
+      <div class="skill-block"><label>Research</label><ul><li>User Interviews</li><li>Card Sorting</li><li>Survey Design</li><li>Analytics</li><li>Stakeholder Mapping</li></ul></div>
+      <div class="skill-block"><label>Domain</label><ul><li>Industrial / HMI</li><li>Embedded Systems</li><li>Civic Tech</li><li>Climate / Sustainability</li><li>Consumer Apps</li></ul></div>
     </div>
   </div>
 </section>
@@ -301,14 +277,14 @@ footer p { font-size: 12px; color: var(--muted); margin-bottom: 0; }
 <section class="contact" id="contact">
   <div class="contact-inner">
     <p class="pre">Get in touch</p>
-    <h2>${contactHeadline}</h2>
-    <a class="contact-link" href="mailto:${email}">Send a message</a>
+    <h2>Let's build something worth patenting.</h2>
+    <a class="contact-link" href="mailto:venu@example.com">Send a message</a>
   </div>
 </section>
 
 <footer>
-  <p>© 2025 ${name}</p>
-  <p>${footerNote}</p>
+  <p>© 2025 Venu Sri Sabbavarapu</p>
+  <p>Product Manager · UX Lead · US D1,045,913 S</p>
 </footer>
 
 </body>
@@ -465,11 +441,10 @@ function build() {
   }
 
   const projects = loadProjects();
-  const home = loadHome();
   console.log(`Found ${projects.length} projects`);
 
   // Build homepage
-  fs.writeFileSync(path.join(SITE_DIR, 'index.html'), buildIndex(projects, home));
+  fs.writeFileSync(path.join(SITE_DIR, 'index.html'), buildIndex(projects));
   console.log('Built: index.html');
 
   // Build case study pages
