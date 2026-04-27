@@ -153,19 +153,23 @@ function buildIndex(projects, home) {
   const skillsDomain = (home.skills_domain || '').split(',').map(s => `<li>${s.trim()}</li>`).join('');
   const footerNote = home.footer_note || '';
 
-  const cards = projects.filter(p => p.featured !== false).map((p, i) => `
-    <a class="project-card" href="${p.slug}.html">
+  const cards = projects.filter(p => p.featured !== false).map((p, i) => {
+    const accent = p.accent || '#F5C518';
+    const tags = (typeof p.tags === 'string' ? p.tags.split(',').map(t => t.trim()) : p.tags || []);
+    return `
+    <a class="project-card" href="${p.slug}.html" style="--card-accent:${accent};">
       <div class="project-num">0${i + 1}</div>
       <div class="project-body">
         <div class="project-tags">
-          ${(typeof p.tags === 'string' ? p.tags.split(',').map(t => t.trim()) : p.tags || []).map((t, ti) => `<span class="tag${ti === 0 ? ' highlight' : ''}" style="${ti === 0 ? `--accent:${p.accent || '#F5C518'}` : ''}">${t}</span>`).join('')}
+          ${tags.map((t, ti) => `<span class="tag${ti === 0 ? ' highlight' : ''}">${t}</span>`).join('')}
         </div>
         <h2>${p.title}</h2>
         <p>${p.summary || ''}</p>
       </div>
       <div class="project-arrow">→</div>
     </a>
-  `).join('');
+  `;
+  }).join('');
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -230,19 +234,28 @@ ${BASE_CSS}
   align-items: start; gap: 32px; padding: 40px;
   background: var(--gray); text-decoration: none; color: inherit;
   position: relative; overflow: hidden;
-  transition: background 0.3s; border-left: 3px solid transparent;
+  transition: background 0.3s, border-left-color 0.3s;
+  border-left: 3px solid transparent;
 }
 .project-card::before {
   content: ''; position: absolute; inset: 0;
-  background: rgba(245,197,24,0.05); opacity: 0; transition: opacity 0.3s;
+  background: var(--card-accent, var(--yellow));
+  opacity: 0; transition: opacity 0.3s;
 }
-.project-card:hover { background: var(--mid); border-left-color: var(--yellow); }
-.project-card:hover::before { opacity: 1; }
+.project-card:hover {
+  background: var(--mid);
+  border-left-color: var(--card-accent, var(--yellow));
+}
+.project-card:hover::before { opacity: 0.04; }
+.project-card:active {
+  background: #2A2A2A;
+  border-left-color: var(--card-accent, var(--yellow));
+}
 .project-num {
   font-family: 'Space Grotesk', sans-serif; font-size: 48px; font-weight: 700;
   color: rgba(255,255,255,0.05); line-height: 1; padding-top: 4px; transition: color 0.3s;
 }
-.project-card:hover .project-num { color: rgba(245,197,24,0.15); }
+.project-card:hover .project-num { color: var(--card-accent, var(--yellow)); opacity: 0.2; }
 .project-body { position: relative; z-index: 1; }
 .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
 .tag {
@@ -251,7 +264,10 @@ ${BASE_CSS}
   background: var(--mid); border: 1px solid var(--border); color: var(--muted);
 }
 .tag.highlight {
-  background: rgba(245,197,24,0.1); border-color: rgba(245,197,24,0.35); color: var(--yellow);
+  background: transparent;
+  border-color: var(--card-accent, var(--yellow));
+  color: var(--card-accent, var(--yellow));
+  opacity: 0.85;
 }
 .project-body h2 {
   font-family: 'Space Grotesk', sans-serif; font-size: clamp(20px, 2.5vw, 28px);
@@ -264,7 +280,7 @@ ${BASE_CSS}
   color: var(--muted); font-size: 20px; transition: all 0.3s; flex-shrink: 0; margin-top: 8px;
   position: relative; z-index: 1;
 }
-.project-card:hover .project-arrow { background: var(--yellow); border-color: var(--yellow); color: var(--black); }
+.project-card:hover .project-arrow { background: var(--card-accent, var(--yellow)); border-color: var(--card-accent, var(--yellow)); color: var(--black); }
 
 .about { padding: 120px 48px; border-top: 1px solid var(--border); }
 .about-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
