@@ -6,7 +6,7 @@ tagline: I build products at the intersection of hardware, software, and human
 email: venusri.s@gmail.com
 location: United States
 industries: Industrial · Civic · Climate
-contact_headline: Let's build something worth patenting.
+contact_headline: "Open to PM and UX roles, in hardware and robotics. "
 about_headline: Design thinking meets product delivery
 about_body: Two years at Caterpillar doing UX design and systems engineering on
   HMI for industrial power generators. Defined requirements, designed UI for
