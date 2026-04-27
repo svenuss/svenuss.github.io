@@ -27,19 +27,75 @@ body::after {
   content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.4;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
 }
+
+/* ── Global link reset — removes all default blue browser styling ── */
+a {
+  color: inherit;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+a:visited { color: inherit; }
+a:focus { outline: 2px solid var(--yellow); outline-offset: 3px; }
+a:focus:not(:focus-visible) { outline: none; }
+
+/* ── Nav ── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   padding: 20px 48px; display: flex; align-items: center; justify-content: space-between;
   background: rgba(8,8,8,0.85); backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
 }
-.nav-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; color: var(--text); text-decoration: none; }
+.nav-name {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px;
+  color: var(--text); text-decoration: none; transition: opacity 0.2s;
+}
+.nav-name:hover { opacity: 0.7; }
+.nav-name:active { opacity: 0.5; }
 .nav-name span { color: var(--yellow); }
-.nav-back { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.nav-back {
+  font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--muted); text-decoration: none; transition: color 0.2s;
+}
 .nav-back:hover { color: var(--yellow); }
+.nav-back:active { color: var(--text); }
 .nav-links { display: flex; gap: 36px; list-style: none; }
-.nav-links a { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-.nav-links a:hover { color: var(--yellow); }
+.nav-links a {
+  font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--muted); text-decoration: none;
+  transition: color 0.2s; padding-bottom: 2px; border-bottom: 1px solid transparent;
+}
+.nav-links a:hover { color: var(--yellow); border-bottom-color: rgba(245,197,24,0.4); }
+.nav-links a:active { color: var(--text); }
+
+/* ── Project cards ── */
+.project-card:active { background: #2E2E2E; border-left-color: var(--yellow); }
+.project-card:active .project-arrow { background: var(--yellow); border-color: var(--yellow); color: var(--black); }
+.project-card:visited { color: inherit; }
+
+/* ── Nav proj (prev/next) ── */
+.nav-proj:active { background: #2E2E2E; }
+.nav-proj:visited { color: inherit; }
+.nav-proj.right:active { background: #2E2E2E; }
+
+/* ── Live links ── */
+.live-link:visited { color: var(--accent, var(--yellow)); }
+.live-link:active { opacity: 0.7; }
+
+/* ── Contact button ── */
+.contact-link:visited { color: var(--black); }
+.contact-link:active { opacity: 0.8; transform: translateY(1px); }
+
+/* ── Prose links (inside case study content) ── */
+.prose a {
+  color: var(--accent, var(--yellow));
+  text-decoration: none;
+  border-bottom: 1px solid rgba(245,197,24,0.25);
+  transition: border-color 0.2s, color 0.2s;
+}
+.prose a:hover { border-bottom-color: var(--accent, var(--yellow)); }
+.prose a:visited { color: var(--accent, var(--yellow)); opacity: 0.8; }
+.prose a:active { opacity: 0.6; }
+
 @media (max-width: 768px) {
   nav { padding: 16px 24px; }
   .nav-links { display: none; }
@@ -49,6 +105,15 @@ nav {
 // ── Ensure output directories ─────────────────────────────
 function ensureDir(dir) {
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+}
+
+// ── Load home page content ────────────────────────────────
+function loadHome() {
+  const homePath = './home.md';
+  if (!fs.existsSync(homePath)) return {};
+  const raw = fs.readFileSync(homePath, 'utf8');
+  const { data } = matter(raw);
+  return data;
 }
 
 // ── Load and sort projects ────────────────────────────────
@@ -69,13 +134,31 @@ function renderContent(md) {
 }
 
 // ── Build homepage ────────────────────────────────────────
-function buildIndex(projects) {
+function buildIndex(projects, home) {
+  const name = home.name || 'Venu Sri Sabbavarapu';
+  const firstName = name.split(' ')[0];
+  const lastName = name.split(' ').slice(1).join(' ');
+  const jobTitle = home.title || 'Product Manager & UX Lead';
+  const tagline = home.tagline || '';
+  const email = home.email || 'hello@example.com';
+  const location = home.location || 'United States';
+  const patent = home.patent || '';
+  const industries = home.industries || '';
+  const contactHeadline = home.contact_headline || "Let's work together.";
+  const aboutHeadline = home.about_headline || 'About';
+  const aboutBody = (home.about_body || '').split('\\n\\n').map(p => `<p>${p}</p>`).join('');
+  const skillsProduct = (home.skills_product || '').split(',').map(s => `<li>${s.trim()}</li>`).join('');
+  const skillsDesign = (home.skills_design || '').split(',').map(s => `<li>${s.trim()}</li>`).join('');
+  const skillsResearch = (home.skills_research || '').split(',').map(s => `<li>${s.trim()}</li>`).join('');
+  const skillsDomain = (home.skills_domain || '').split(',').map(s => `<li>${s.trim()}</li>`).join('');
+  const footerNote = home.footer_note || '';
+
   const cards = projects.filter(p => p.featured !== false).map((p, i) => `
     <a class="project-card" href="${p.slug}.html">
       <div class="project-num">0${i + 1}</div>
       <div class="project-body">
         <div class="project-tags">
-          ${(p.tags || []).map((t, ti) => `<span class="tag${ti === 0 ? ' highlight' : ''}" style="${ti === 0 ? `--accent:${p.accent || '#F5C518'}` : ''}">${t}</span>`).join('')}
+          ${(typeof p.tags === 'string' ? p.tags.split(',').map(t => t.trim()) : p.tags || []).map((t, ti) => `<span class="tag${ti === 0 ? ' highlight' : ''}" style="${ti === 0 ? `--accent:${p.accent || '#F5C518'}` : ''}">${t}</span>`).join('')}
         </div>
         <h2>${p.title}</h2>
         <p>${p.summary || ''}</p>
@@ -89,7 +172,7 @@ function buildIndex(projects) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Venu Sri Sabbavarapu — Product Manager</title>
+<title>${name} — ${jobTitle}</title>
 <link href="${FONTS}" rel="stylesheet">
 <style>
 ${BASE_CSS}
@@ -225,8 +308,7 @@ footer p { font-size: 12px; color: var(--muted); margin-bottom: 0; }
 <body>
 
 <nav>
-  <a class="nav-name" href="index.html">Venu<span>.</span></a>
-  <ul class="nav-links">
+  <a class="nav-name" href="index.html">${firstName}<span>.</span></a>
     <li><a href="#work">Work</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -236,14 +318,14 @@ footer p { font-size: 12px; color: var(--muted); margin-bottom: 0; }
 <section class="hero">
   <div class="hero-bg">PM</div>
   <div class="hero-inner">
-    <div class="hero-tag">Product Manager &amp; UX Lead</div>
-    <h1>Venu Sri<span class="accent">Sabbavarapu</span></h1>
-    <p class="hero-desc">I build products at the intersection of hardware, software, and human behavior — from patented industrial HMI systems to consumer-facing web experiences.</p>
+    <div class="hero-tag">${jobTitle}</div>
+    <h1>${firstName}<span class="accent">${lastName}</span></h1>
+    <p class="hero-desc">${tagline}</p>
     <div class="hero-stats">
       <div class="hero-stat"><label>Experience</label><span>UX Design + PM</span></div>
-      <div class="hero-stat"><label>Patent</label><span>US D1,045,913 S</span></div>
-      <div class="hero-stat"><label>Industries</label><span>Industrial · Civic · Climate</span></div>
-      <div class="hero-stat"><label>Based</label><span>United States</span></div>
+      ${patent ? `<div class="hero-stat"><label>Patent</label><span>${patent}</span></div>` : ''}
+      ${industries ? `<div class="hero-stat"><label>Industries</label><span>${industries}</span></div>` : ''}
+      ${location ? `<div class="hero-stat"><label>Based</label><span>${location}</span></div>` : ''}
     </div>
   </div>
 </section>
@@ -260,16 +342,14 @@ footer p { font-size: 12px; color: var(--muted); margin-bottom: 0; }
   <div class="about-inner">
     <div>
       <div class="section-label" style="margin-bottom:20px;">About</div>
-      <h2>Design thinking meets <span>product delivery</span></h2>
-      <p>I'm a Product Manager and UX Design Lead who operates across the full product lifecycle — from generative user research and interaction design through to engineering handoff, Agile delivery, and IP creation.</p>
-      <p>My background spans industrial hardware (Caterpillar), civic technology (DC Public Library), and climate tech (EcoFoote) — giving me range across complex user contexts and technical constraints.</p>
-      <p>For hardware and robotics companies: I understand embedded system constraints, firmware coordination, and what it takes to design interfaces that work on real physical hardware.</p>
+      <h2>${aboutHeadline}</h2>
+      ${aboutBody}
     </div>
     <div class="skills-grid">
-      <div class="skill-block"><label>Product</label><ul><li>Roadmapping</li><li>Agile / Sprints</li><li>Requirements (SRS)</li><li>Stakeholder Mgmt</li><li>IP / Patent Filing</li></ul></div>
-      <div class="skill-block"><label>Design</label><ul><li>Adobe Xd</li><li>Hi-Fi Prototyping</li><li>Information Architecture</li><li>Annotation Specs</li><li>Design Systems</li></ul></div>
-      <div class="skill-block"><label>Research</label><ul><li>User Interviews</li><li>Card Sorting</li><li>Survey Design</li><li>Analytics</li><li>Stakeholder Mapping</li></ul></div>
-      <div class="skill-block"><label>Domain</label><ul><li>Industrial / HMI</li><li>Embedded Systems</li><li>Civic Tech</li><li>Climate / Sustainability</li><li>Consumer Apps</li></ul></div>
+      <div class="skill-block"><label>Product</label><ul>${skillsProduct}</ul></div>
+      <div class="skill-block"><label>Design</label><ul>${skillsDesign}</ul></div>
+      <div class="skill-block"><label>Research</label><ul>${skillsResearch}</ul></div>
+      <div class="skill-block"><label>Domain</label><ul>${skillsDomain}</ul></div>
     </div>
   </div>
 </section>
@@ -277,14 +357,14 @@ footer p { font-size: 12px; color: var(--muted); margin-bottom: 0; }
 <section class="contact" id="contact">
   <div class="contact-inner">
     <p class="pre">Get in touch</p>
-    <h2>Let's build something worth patenting.</h2>
-    <a class="contact-link" href="mailto:venu@example.com">Send a message</a>
+    <h2>${contactHeadline}</h2>
+    <a class="contact-link" href="mailto:${email}">Send a message</a>
   </div>
 </section>
 
 <footer>
-  <p>© 2025 Venu Sri Sabbavarapu</p>
-  <p>Product Manager · UX Lead · US D1,045,913 S</p>
+  <p>© 2025 ${name}</p>
+  <p>${footerNote}</p>
 </footer>
 
 </body>
@@ -376,8 +456,6 @@ ${BASE_CSS}
 .prose td { font-size: 14px; color: #9A9A9A; padding: 12px 16px; border: 1px solid var(--border); background: var(--dark); }
 .prose tr:hover td { background: var(--gray); }
 .prose hr { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
-.prose a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
-.prose a:hover { border-bottom-color: var(--accent); }
 .prose code { font-family: 'Space Mono', monospace; font-size: 12px; background: var(--gray); padding: 2px 6px; color: var(--accent); }
 
 .live-link {
@@ -441,10 +519,11 @@ function build() {
   }
 
   const projects = loadProjects();
+  const home = loadHome();
   console.log(`Found ${projects.length} projects`);
 
   // Build homepage
-  fs.writeFileSync(path.join(SITE_DIR, 'index.html'), buildIndex(projects));
+  fs.writeFileSync(path.join(SITE_DIR, 'index.html'), buildIndex(projects, home));
   console.log('Built: index.html');
 
   // Build case study pages
