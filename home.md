@@ -8,20 +8,12 @@ location: United States
 industries: Industrial · Civic · Climate
 contact_headline: Let's build something worth patenting.
 about_headline: Design thinking meets product delivery
-about_body: >-
-  I'm a Product and UX Design Lead who operates across the full product
-  lifecycle, from generative user research and interaction design through to
-  engineering handoff, Agile delivery, and IP creation.
-
-
-  My background spans industrial hardware (Caterpillar), civic technology (DC
-  Public Library), and climate tech (EcoFoote), along with several years of
-  experience working in e-commerce, hospitality and public sector industries.
-
-
-  For hardware and robotics companies: I understand embedded system constraints,
-  firmware coordination, and what it takes to design interfaces that work on
-  real physical hardware.
+about_body: Two years at Caterpillar doing UX design and systems engineering on
+  HMI for industrial power generators. Defined requirements, designed UI for
+  more than 15 features using an established design system, ran bench
+  validation, set up test benches among other systems engineering
+  responsibilities. Prior to that, I was at a library redesign, a climate app,
+  and ten years building digital products across a few different industries.
 skills_product: Roadmapping, Agile / Sprints, Requirements (SRS), Stakeholder Management
 skills_design: Figma, AI Design, Visual and Interaction Design, Hi-Fidelity
   Prototyping, Information Architecture, Annotation Specs, Design Systems
