@@ -3,7 +3,7 @@ name: Venu Sri Sabbavarapu
 title: Product & UX Lead
 tagline: I build products at the intersection of hardware, software, and human
   behavior, from industrial HMI systems to consumer-facing web experiences.
-email: venu@example.com
+email: venusri.s@gmail.com
 location: United States
 industries: Industrial · Civic · Climate
 contact_headline: Let's build something worth patenting.
