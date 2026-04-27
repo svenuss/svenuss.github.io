@@ -1,0 +1,102 @@
+content:
+  - name: home
+    label: Home Page
+    type: file
+    path: home.md
+    fields:
+      - name: name
+        label: Your Full Name
+        type: string
+      - name: title
+        label: Job Title / Tagline Line 1
+        type: string
+      - name: tagline
+        label: Hero Description (shown under your name)
+        type: text
+      - name: email
+        label: Contact Email
+        type: string
+      - name: location
+        label: Location
+        type: string
+      - name: patent
+        label: Patent Number
+        type: string
+      - name: industries
+        label: Industries (shown in hero stats)
+        type: string
+      - name: contact_headline
+        label: Contact Section Headline
+        type: string
+      - name: about_headline
+        label: About Section Headline
+        type: string
+      - name: about_body
+        label: About Section Body (use \n\n for new paragraphs)
+        type: text
+      - name: skills_product
+        label: Skills — Product (comma separated)
+        type: string
+      - name: skills_design
+        label: Skills — Design (comma separated)
+        type: string
+      - name: skills_research
+        label: Skills — Research (comma separated)
+        type: string
+      - name: skills_domain
+        label: Skills — Domain (comma separated)
+        type: string
+      - name: footer_note
+        label: Footer Note
+        type: string
+
+  - name: projects
+    label: Case Studies
+    type: collection
+    path: _projects
+    filename: "{fields.slug}.md"
+    fields:
+      - name: title
+        label: Project Title
+        type: string
+        required: true
+      - name: slug
+        label: URL Slug
+        type: string
+        required: true
+      - name: order
+        label: Display Order
+        type: number
+      - name: featured
+        label: Show on homepage?
+        type: boolean
+        default: true
+      - name: company
+        label: Company / Client
+        type: string
+      - name: role
+        label: Your Role
+        type: string
+      - name: domain
+        label: Domain / Industry
+        type: string
+      - name: year
+        label: Year
+        type: string
+      - name: accent
+        label: Accent Color (hex)
+        type: string
+        default: "#F5C518"
+      - name: tags
+        label: Tags (comma separated)
+        type: string
+      - name: summary
+        label: One-line Summary
+        type: text
+      - name: body
+        label: Case Study Content
+        type: rich-text
+
+media:
+  input: assets/images
+  output: /assets/images
