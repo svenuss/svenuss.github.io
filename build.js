@@ -372,7 +372,7 @@ footer p { font-size: 12px; color: var(--muted); margin-bottom: 0; }
 </section>
 
 <footer>
-  <p>© 2025 ${name}</p>
+  <p>© 2026 ${name}</p>
   <p>${footerNote}</p>
 </footer>
 
