@@ -4,7 +4,7 @@ title: Product & UX Lead
 tagline: I build products at the intersection of hardware, software, and human
   behavior, from industrial HMI systems to consumer-facing web experiences.
 email: venusri.s@gmail.com
-location: United States
+location: NYC Metro Area. Open to Relocation.
 industries: Industrial · Civic · Climate
 contact_headline: PM and UX Lead
 about_headline: Design thinking meets product delivery
