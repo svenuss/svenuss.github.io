@@ -1,6 +1,6 @@
 ---
 name: Venu Sabbavarapu
-title: Product & UX Lead
+title: Product Manager · Hardware
 tagline: I build products at the intersection of hardware, software, and human
   behavior, from industrial HMI systems to consumer-facing web experiences.
 email: venusri.s@gmail.com
@@ -24,5 +24,5 @@ skills_design: Figma, AI Design, AI Prototyping, Bench Validation, User Testing,
 skills_research: User Interviews, Card Sorting, Survey Design, Analytics, Stakeholder Mapping
 skills_domain: Industrial / HMI, Embedded Systems, Civic Tech, Climate /
   Sustainability, Consumer Apps
-footer_note: "Product Manager · UX Lead "
+footer_note: Product Manager · Hardware
 ---
