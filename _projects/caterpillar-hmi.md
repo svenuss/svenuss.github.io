@@ -39,7 +39,7 @@ Studied generator operator workflows across single-gen and grid-parallel environ
 
 Designed a hierarchical navigation tree covering the full screen taxonomy, Genset Overview, LSLD Control, Sync, DBA, and Load Share views, documented in Word for engineering readability.
 
-### 03 — High-Fidelity Mockups (Adobe Xd)
+### 03 — High-Fidelity Mockups with Figma
 
 Produced pixel-accurate, full-color mockups representing every screen state, active/idle modes, real-time data readouts, alert states, feedback sections, in a dark-themed visual system optimized for low-light industrial environments.
 
