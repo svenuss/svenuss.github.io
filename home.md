@@ -2,7 +2,8 @@
 name: Venu Sabbavarapu
 title: Product Manager · Hardware, Embedded Systems & HMI
 tagline: I build products at the intersection of hardware, software, and human
-  behavior, from industrial HMI systems to consumer-facing web experiences.
+  behavior, from industrial HMI systems to enterprise applications to
+  consumer-facing experiences.
 email: venusri.s@gmail.com
 location: New Jersey. Open to Relocation.
 industries: Industrial · Civic · Climate
