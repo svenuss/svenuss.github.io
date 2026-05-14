@@ -1,5 +1,5 @@
 ---
-title: EcoFoote — Sustainability Behavior App
+title: EcoFoote, Sustainability Behavior App
 slug: ecofoote
 order: 3
 featured: true
