@@ -169,7 +169,7 @@ nav {
 <div class="case-hero">
   <div class="case-tag">Case Study 01 · Caterpillar Inc.</div>
   <h1>Caterpillar: Industrial HMI Design System</h1>
-  <p class="subtitle">Designed the intelligence layer for Caterpillar's power generation control hardware, end-to-end UX lead and PM, resulting in a granted U.S. design patent.</p>
+  <p class="subtitle">Designed the interface layer for Caterpillar's power generation control hardware, end-to-end requirements to design to user testing along with bench setup for validation and verification.</p>
   <div class="meta-row">
     <div class="meta-item">
       <label>Company</label>
@@ -193,7 +193,7 @@ nav {
   
   <div class="prose"><h2>The Problem</h2>
 <p>Caterpillar&#39;s power generation systems, generator sets and LSLD (Load Shed / Load Demand) controllers, operate in environments where a misread value or delayed response can cause equipment failure or safety incidents. Operators navigated dense, inconsistent interfaces across hardware generations with no unified design system.</p>
-<p>I was brought on as UX Design Lead with PM responsibilities to create a cohesive HMI for a new class of Caterpillar generator control hardware, building both the visual design system and the product development process from scratch.</p>
+<p>I was brought on as UX Systems Engineer with design, user testing, verification and validation responsibilities to create a cohesive HMI for a new class of Caterpillar generator control hardware, building both the visual design system and the product development process.</p>
 <blockquote>
 <p>&quot;The challenge wasn&#39;t just visual, it was translating complex real-time system states (power load, frequency, sequencing logic) into an interface a field technician could trust under pressure.&quot;</p>
 </blockquote>
@@ -210,31 +210,27 @@ nav {
 <td>~8</td>
 </tr>
 <tr>
-<td>Core delivery artifacts</td>
-<td>4</td>
-</tr>
-<tr>
 <td>Estimated reduction in review cycles</td>
 <td>~30%</td>
 </tr>
 </tbody></table>
 <h2>Process</h2>
 <h3>01 — Operator Research &amp; Context Mapping</h3>
-<p>Studied generator operator workflows across single-gen and grid-parallel environments. Mapped mental models for diagnosing system state — load, frequency, voltage, LSLD sequencing, and identified where existing interfaces caused hesitation or errors.</p>
+<p>Studied generator operator workflows across single-gen and grid-parallel environments. Mapped navigation flows, updated UI design screens using ECS Design System from Mannheim.</p>
 <h3>02 — Navigation Architecture</h3>
 <p>Designed a hierarchical navigation tree covering the full screen taxonomy, Genset Overview, LSLD Control, Sync, DBA, and Load Share views, documented in Word for engineering readability.</p>
 <h3>03 — High-Fidelity Mockups (Adobe Xd)</h3>
 <p>Produced pixel-accurate, full-color mockups representing every screen state, active/idle modes, real-time data readouts, alert states, feedback sections, in a dark-themed visual system optimized for low-light industrial environments.</p>
 <h3>04 — Annotation Specs &amp; Modbus Mapping</h3>
-<p>Annotated every UI element&#39;s behavior, data binding, and state logic. Created a companion Modbus Table linking each display parameter to its register address — eliminating back-and-forth between design and firmware.</p>
+<p>Annotated every UI element&#39;s behavior, data binding, and state logic. Created a companion Modbus Table linking each display parameter to its register address, eliminating back-and-forth between design and firmware.</p>
 <h3>05 — Agile Sprint Execution</h3>
 <p>Ran sprint cycles with cross-functional reviews involving firmware engineers, product managers, and field operations.</p>
 <h2>Deliverables</h2>
 <ul>
-<li><strong>Navigation Tree</strong> — Full screen taxonomy in Word</li>
-<li><strong>Hi-Fi Mockups · Figma</strong> — Pixel-accurate dark-themed UI covering all screen states</li>
-<li><strong>Annotated Specs</strong> — Behavior documentation per UI element</li>
-<li><strong>Modbus Table</strong> — Parameter-to-register mapping bridging UX and firmware</li>
+<li><strong>Navigation Tree</strong>: Full screen taxonomy in Word</li>
+<li><strong>Hi-Fi Mockups · Figma</strong>: Pixel-accurate dark-themed UI covering all screen states for particular features like LSLD, Load Control, Load Share, and other features</li>
+<li><strong>Annotated Specs</strong>: Behavior documentation per UI element</li>
+<li><strong>Modbus Table</strong>: Parameter-to-register mapping bridging UX and firmware</li>
 </ul>
 </div>
   <div class="next-prev"><a class="nav-proj right" href="dc-library.html"><span class="dir">Next →</span><h4>DC Public Library — Website Redesign</h4></a></div>
