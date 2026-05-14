@@ -51,14 +51,11 @@ Annotated every UI element's behavior, data binding, and state logic. Created a 
 
 Ran sprint cycles with cross-functional reviews involving firmware engineers, product managers, and field operations.
 
-## Deliverables  
+## Deliverables
 
-
-```
 ![description](/assets/images/cat-engineoverview.png)
 ![description](/assets/images/cat-lsldoverview.png)
 ![description](/assets/images/cat-touchsettings.png)
-```
 
 - **Navigation Tree**: Full screen taxonomy in Word
 - **Hi-Fi Mockups · Figma**: Pixel-accurate dark-themed UI covering all screen states for particular features like LSLD, Load Control, Load Share, and other features
